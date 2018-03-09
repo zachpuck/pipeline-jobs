@@ -1,3 +1,4 @@
+#!/bin/groovy
 pipelineJob('Jenkins Offline Agent Cleanup') {
   definition {
     cps {

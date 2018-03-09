@@ -1,0 +1,18 @@
+---
+githubCredentials: github-access
+pipelines:
+  - uniqueId: pipeline-jenkins
+    displayName: JenkinsCI pipeline
+    description: Pipeline Jenkins Helm chart and docker files
+    type: cnct
+    org: samsung-cnct
+    repo: pipeline-jenkins
+    keepDays: 10
+  - uniqueId: pipeline-jobs
+    displayName: Jenkins jobs pipeline
+    description: Job configuration repository
+    type: standard
+    org: samsung-cnct
+    repo: pipeline-jobs
+    keepDays: 10
+    concurrent: true
