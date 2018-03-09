@@ -1,0 +1,10 @@
+---
+uniqueId: pipeline-jobs
+displayName: Jenkins jobs pipeline
+description: Job configuration repository
+type: standard
+org: samsung-cnct
+repo: pipeline-jobs
+keepDays: 10
+concurrent: true
+credentials: github-access
