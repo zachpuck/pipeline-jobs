@@ -30,28 +30,32 @@ void createJobs() {
         displayName(pipeline.displayName)
 
         branchSources {
-          github {
-            id (pipeline.uniqueId)
-            repoOwner(pipeline.org)
-            repository(pipeline.repo)
-            scanCredentialsId(pipeline.credentials)
-            buildOriginBranch(true)
-            buildOriginBranchWithPR(true)
-            buildOriginPRHead(false)
-            buildOriginPRMerge(false)
-            buildForkPRMerge(true)
-            buildForkPRHead(false)
-          }
-        }
-
-        strategy {
-          defaultBranchPropertyStrategy {
-            props {
-              triggerPRCommentBranchProperty {
-                commentBody('.*test this please.*')
+          branchSource {
+            source {
+              github {
+                id (pipeline.uniqueId)
+                repoOwner(pipeline.org)
+                repository(pipeline.repo)
+                scanCredentialsId(pipeline.credentials)
+                buildOriginBranch(true)
+                buildOriginBranchWithPR(true)
+                buildOriginPRHead(false)
+                buildOriginPRMerge(false)
+                buildForkPRMerge(true)
+                buildForkPRHead(false)
               }
             }
           }
+
+          strategy {
+            defaultBranchPropertyStrategy {
+              props {
+                triggerPRCommentBranchProperty {
+                  commentBody('.*test this please.*')
+                }
+              }
+            }
+          }              
         }
 
         // defaults Jenkinsfile
