@@ -30,39 +30,39 @@ void createJobs() {
         displayName(pipeline.displayName)
 
         branchSources {
-          branchSource {
-            source {
-              github {
-                id (pipeline.uniqueId)
-                repoOwner(pipeline.org)
-                repository(pipeline.repo)
-                credentialsId(pipeline.credentials)
-                buildOriginBranch(true)
-                buildOriginBranchWithPR(true)
-                buildOriginPRHead(false)
-                buildOriginPRMerge(false)
-                buildForkPRMerge(true)
-                buildForkPRHead(false)
-              }
+          github {
+            id (pipeline.uniqueId)
+              repoOwner(pipeline.org)
+              repository(pipeline.repo)
+              credentialsId(pipeline.credentials)
+              buildOriginBranch(true)
+              buildOriginBranchWithPR(true)
+              buildOriginPRHead(false)
+              buildOriginPRMerge(false)
+              buildForkPRMerge(true)
+              buildForkPRHead(false)
             }
+          }
 
-            strategy {
-              defaultBranchPropertyStrategy {
-                props {
-                  buildRetentionBranchProperty {
-                    buildDiscarder {
-                      logRotator {
-                        daysToKeepStr("${pipeline.keepDays}")
-                      }
+          strategy {
+            defaultBranchPropertyStrategy {
+              props {
+                buildRetentionBranchProperty {
+                  buildDiscarder {
+                    logRotator {
+                      daysToKeepStr("${pipeline.keepDays}")
+                      numToKeepStr("")
+                      artifactDaysToKeepStr("")
+                      artifactNumToKeepStr("")
                     }
                   }
-                  triggerPRCommentBranchProperty {
-                    commentBody('.*test this please.*')
-                  }
+                }
+                triggerPRCommentBranchProperty {
+                  commentBody('.*test this please.*')
                 }
               }
-            }  
-          }            
+            }
+          }
         }
 
         // defaults Jenkinsfile
