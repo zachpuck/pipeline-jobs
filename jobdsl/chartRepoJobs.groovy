@@ -34,7 +34,7 @@ void createJobs() {
             id (pipeline.uniqueId)
             repoOwner(pipeline.org)
             repository(pipeline.repo)
-            credentialsId(pipeline.credentials)
+            scanCredentialsId(pipeline.credentials)
             buildOriginBranch(true)
             buildOriginBranchWithPR(true)
             buildOriginPRHead(false)
