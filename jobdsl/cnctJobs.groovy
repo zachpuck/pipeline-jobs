@@ -97,13 +97,6 @@ void createJobs() {
             scm {
               git {
                 branch('master')
-          
-                browser {
-                  githubWeb {
-                    repoUrl('https://{{ .Values.github.baseUrl }}/{{ .Values.github.jobsOrg }}/{{ .Values.github.jobsRepo }}')
-                  }
-                }
-
                 remote {
                   credentials(pipeline.credentials)
                   url('https://{{ .Values.github.baseUrl }}/{{ .Values.github.jobsOrg }}/{{ .Values.github.jobsRepo }}')
