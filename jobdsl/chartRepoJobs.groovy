@@ -45,17 +45,24 @@ void createJobs() {
                 buildForkPRHead(false)
               }
             }
-          }
 
-          strategy {
-            defaultBranchPropertyStrategy {
-              props {
-                triggerPRCommentBranchProperty {
-                  commentBody('.*test this please.*')
+            strategy {
+              defaultBranchPropertyStrategy {
+                props {
+                  buildRetentionBranchProperty {
+                    buildDiscarder {
+                      logRotator {
+                        daysToKeepStr("${pipeline.keepDays}")
+                      }
+                    }
+                  }
+                  triggerPRCommentBranchProperty {
+                    commentBody('.*test this please.*')
+                  }
                 }
               }
-            }
-          }              
+            }  
+          }            
         }
 
         // defaults Jenkinsfile
