@@ -43,21 +43,23 @@ void createJobs() {
             buildForkPRHead(false)
           }
 
-          strategy {
-            defaultBranchPropertyStrategy {
-              props {
-                buildRetentionBranchProperty {
-                  buildDiscarder {
-                    logRotator {
-                      daysToKeepStr("${pipeline.keepDays}")
-                      numToKeepStr("")
-                      artifactDaysToKeepStr("")
-                      artifactNumToKeepStr("")
+          branchSource {
+            strategy {
+              defaultBranchPropertyStrategy {
+                props {
+                  buildRetentionBranchProperty {
+                    buildDiscarder {
+                      logRotator {
+                        daysToKeepStr("${pipeline.keepDays}")
+                        numToKeepStr("")
+                        artifactDaysToKeepStr("")
+                        artifactNumToKeepStr("")
+                      }
                     }
                   }
-                }
-                triggerPRCommentBranchProperty {
-                  commentBody('.*test this please.*')
+                  triggerPRCommentBranchProperty {
+                    commentBody('.*test this please.*')
+                  }
                 }
               }
             }
