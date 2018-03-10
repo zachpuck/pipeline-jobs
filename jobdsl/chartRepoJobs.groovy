@@ -49,6 +49,13 @@ void createJobs() {
             strategy {
               defaultBranchPropertyStrategy {
                 props {
+                  buildRetentionBranchProperty {
+                    buildDiscarder {
+                      logRotator {
+                        daysToKeepStr("${pipeline.keepDays}")
+                      }
+                    }
+                  }
                   triggerPRCommentBranchProperty {
                     commentBody('.*test this please.*')
                   }
