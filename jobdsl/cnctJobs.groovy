@@ -91,14 +91,18 @@ void createJobs() {
         }
 
         properties {
-          githubProjectUrl("https://${pipeline.baseUrl}/${pipeline.org}/${pipeline.repo}")
+          githubProjectProperty {
+            projectUrlStr("https://${pipeline.baseUrl}/${pipeline.org}/${pipeline.repo}")
+          }
 
           buildDiscarder {
-            logRotator {
-              daysToKeepStr("${pipeline.keepDays}")
-              numToKeepStr("")
-              artifactDaysToKeepStr("")
-              artifactNumToKeepStr("")
+            strategy {
+              logRotator {
+                daysToKeepStr("${pipeline.keepDays}")
+                numToKeepStr("")
+                artifactDaysToKeepStr("")
+                artifactNumToKeepStr("")
+              }
             }
           }
         }
