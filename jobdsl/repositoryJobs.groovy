@@ -79,7 +79,41 @@ void createJobs() {
           }
         }
       }
-    } 
+    } else if (pipeline.type == 'standard') {
+      pipelineJob(pipeline.uniqueId) {
+        description(pipeline.description)
+        displayName(pipeline.displayName)
+
+        if (pipeline.concurrent) {
+          concurrentBuild(true)
+        } else {
+          concurrentBuild(false)
+        }
+
+        definition {
+          cpsScm {
+            lightweight(true)
+
+            scm {
+              git {
+                branch('master')
+                
+                browser {
+                  githubWeb {
+                    repoUrl('https://{{ .Values.github.baseUrl }}/{{ .Values.github.jobsOrg }}/{{ .Values.github.jobsRepo }}')
+                  }
+                }
+
+                remote {
+                  credentials(pipeline.credentials)
+                  github('{{ .Values.github.jobsOrg }}/{{ .Values.github.jobsRepo }}', 'master', 'https', '{{ .Values.github.baseUrl }}')
+                }
+              }
+            }
+          }
+        }      
+      }
+    }
   }
 }
 
