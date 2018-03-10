@@ -32,16 +32,15 @@ void createJobs() {
         branchSources {
           github {
             id (pipeline.uniqueId)
-              repoOwner(pipeline.org)
-              repository(pipeline.repo)
-              credentialsId(pipeline.credentials)
-              buildOriginBranch(true)
-              buildOriginBranchWithPR(true)
-              buildOriginPRHead(false)
-              buildOriginPRMerge(false)
-              buildForkPRMerge(true)
-              buildForkPRHead(false)
-            }
+            repoOwner(pipeline.org)
+            repository(pipeline.repo)
+            credentialsId(pipeline.credentials)
+            buildOriginBranch(true)
+            buildOriginBranchWithPR(true)
+            buildOriginPRHead(false)
+            buildOriginPRMerge(false)
+            buildForkPRMerge(true)
+            buildForkPRHead(false)
           }
 
           strategy {
