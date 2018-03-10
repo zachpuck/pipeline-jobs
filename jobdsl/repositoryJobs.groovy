@@ -97,7 +97,7 @@ void createJobs() {
             scm {
               git {
                 branch('master')
-          
+                
                 browser {
                   githubWeb {
                     repoUrl('https://{{ .Values.github.baseUrl }}/{{ .Values.github.jobsOrg }}/{{ .Values.github.jobsRepo }}')
@@ -106,8 +106,7 @@ void createJobs() {
 
                 remote {
                   credentials(pipeline.credentials)
-                  url('https://{{ .Values.github.baseUrl }}/{{ .Values.github.jobsOrg }}/{{ .Values.github.jobsRepo }}')
-                  scriptPath('Jenkinsfile')
+                  github('{{ .Values.github.jobsOrg }}/{{ .Values.github.jobsRepo }}', 'master', 'https', '{{ .Values.github.baseUrl }}')
                 }
               }
             }
