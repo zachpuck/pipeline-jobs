@@ -1,8 +1,9 @@
 ---
+type: cnct
 uniqueId: pipeline-jenkins
 displayName: JenkinsCI pipeline
 description: Pipeline Jenkins Helm chart and docker files
-type: cnct
+baseUrl: github.org
 org: samsung-cnct
 repo: pipeline-jenkins
 keepDays: 10
