@@ -3,7 +3,7 @@ type: standard
 uniqueId: pipeline-jobs
 displayName: Jenkins jobs pipeline
 description: Job configuration repository
-baseUrl: github.com
+baseUrl: "github.com"
 org: samsung-cnct
 repo: pipeline-jobs
 keepDays: 10
