@@ -3,9 +3,8 @@ type: standard
 uniqueId: pipeline-jobs
 displayName: Jenkins jobs pipeline
 description: Job configuration repository
-baseUrl: "github.com"
+apiUrl: "https://api.github.com"
 org: samsung-cnct
 repo: pipeline-jobs
 keepDays: 10
-concurrent: true
 credentials: github-access
