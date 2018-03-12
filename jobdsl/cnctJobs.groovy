@@ -41,6 +41,11 @@ void createJobs() {
 
       branchSources {
         branchSource {
+          source {
+            github {
+            }
+          }
+
           strategy {
             defaultBranchPropertyStrategy {
               props {
