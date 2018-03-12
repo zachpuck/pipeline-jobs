@@ -43,6 +43,8 @@ void createJobs() {
         branchSource {
           source {
             github {
+              repoOwner(pipeline.org)
+              repository(pipeline.repo)
             }
           }
 
