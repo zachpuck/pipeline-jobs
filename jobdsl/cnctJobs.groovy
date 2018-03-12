@@ -88,22 +88,28 @@ void createJobs() {
         }
 
         definition {
-          cpsFlowDefinition {
-            script('Jenkinsfile')
-            sandbox(true)
-          }
-        }
+          cpsScmFlowDefinition {
+            scm {
+              gitSCM {
+                userRemoteConfigs {
+                  userRemoteConfig {
+                    url("https://${pipeline.baseUrl}/${pipeline.org}/${pipeline.repo}")
+                    credentialsId(pipeline.credentials)
+                  }
+                }
 
-        scm {
-          git {
-            branch('master')
-            remote {
-              github("${pipeline.org}/${pipeline.repo}", 'https', pipeline.baseUrl)
-              credentials(pipeline.credentials)
+                branches {
+                  branchSpec {
+                    name('master')
+                  }
+                }
+              }
             }
+
+            scriptPath('Jenkinsfile')
+            lightweight(true)
           }
         }
-
       }
     }
   }
