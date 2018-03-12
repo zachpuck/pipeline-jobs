@@ -38,40 +38,19 @@ void createJobs() {
         }
 
         branchSources {
-          branchSource {
-            source {
-              github {
-                id (pipeline.uniqueId)
-                repoOwner(pipeline.org)
-                repository(pipeline.repo)
-                credentialsId(pipeline.credentials)
-                buildOriginBranch(true)
-                buildOriginBranchWithPR(true)
-                buildOriginPRHead(false)
-                buildOriginPRMerge(false)
-                buildForkPRMerge(true)
-                buildForkPRHead(false)
-              }
-            }
-            strategy {
-              defaultBranchPropertyStrategy {
-                props {
-                  buildRetentionBranchProperty {
-                    buildDiscarder {
-                      logRotator {
-                        daysToKeepStr("${pipeline.keepDays}")
-                        numToKeepStr("")
-                        artifactDaysToKeepStr("")
-                        artifactNumToKeepStr("")
-                      }
-                    }
-                  }
-                  triggerPRCommentBranchProperty {
-                    commentBody('.*test this please.*')
-                  }
-                }
-              }
-            }
+          github {
+            id (pipeline.uniqueId)
+            apiUri(pipeline.apiUrl)
+            repoOwner(pipeline.org)
+            repository(pipeline.repo)
+            scanCredentialsId(pipeline.credentials)
+            buildForkPRHead(false)
+            buildForkPRMerge(true)
+            buildOriginPRMerge(false)
+            buildOriginBranch(true)
+            buildOriginBranchWithPR(false)
+            buildOriginPRHead(false)
+            includes('master')
           }
         }
 
@@ -97,41 +76,37 @@ void createJobs() {
             projectUrlStr("https://${pipeline.baseUrl}/${pipeline.org}/${pipeline.repo}")
           }
 
-          buildDiscarder {
-            strategy {
-              logRotator {
-                daysToKeepStr("${pipeline.keepDays}")
-                numToKeepStr("")
-                artifactDaysToKeepStr("")
-                artifactNumToKeepStr("")
-              }
+          pipelineTriggers {
+            triggers {
+              githubPush()
             }
           }
         }
 
+        logRotator {
+          daysToKeepStr("${pipeline.keepDays}")
+          numToKeepStr("")
+          artifactDaysToKeepStr("")
+          artifactNumToKeepStr("")
+        }
+
         definition {
-          cpsScm {
-            lightweight(true)
+          cpsFlowDefinition {
+            script('Jenkinsfile')
+            sandbox(true)
+          }
+        }
 
-            scm {
-              git {
-                branch('master')
-          
-                browser {
-                  githubWeb {
-                    repoUrl("https://${pipeline.baseUrl}/${pipeline.org}/${pipeline.repo}")
-                  }
-                }
-
-                remote {
-                  credentials(pipeline.credentials)
-                  url("https://${pipeline.baseUrl}/${pipeline.org}/${pipeline.repo}")
-                  scriptPath('Jenkinsfile')
-                }
-              }
+        scm {
+          git {
+            branch('master')
+            remote {
+              github("${pipeline.org}/${pipeline.repo}", 'https', pipeline.baseUrl)
+              credentials(pipeline.credentials)
             }
           }
-        }      
+        }
+
       }
     }
   }
