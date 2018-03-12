@@ -2,7 +2,7 @@
 
 import models.*
 import templates.*
-import jenkins.model.Jenkins.*
+import jenkins.model.Jenkins
 
 import hudson.FilePath
 import org.yaml.snakeyaml.Yaml
@@ -30,6 +30,12 @@ void createJobs() {
       multibranchPipelineJob(pipeline.uniqueId) {
         description(pipeline.description)
         displayName(pipeline.displayName)
+
+        // defaults Jenkinsfile
+        configure { project ->
+          project.name = Jenkins.instance.getDescriptor('PipelineMultiBranchDefaultsProject',).clazz.getCanonicalName()
+          project / factory(class: Jenkins.instance.getDescriptor('PipelineBranchDefaultsProjectFactory',).clazz.getCanonicalName())
+        }
 
         branchSources {
           branchSource {
@@ -67,12 +73,6 @@ void createJobs() {
               }
             }
           }
-        }
-
-        // defaults Jenkinsfile
-        configure { project ->
-          project.name = Jenkins.getInstance().getDescriptor('PipelineMultiBranchDefaultsProject',).clazz.getCanonicalName()
-          project / factory(class: Jenkins.getInstance().getDescriptor('PipelineBranchDefaultsProjectFactory',).clazz.getCanonicalName())
         }
 
         orphanedItemStrategy {
