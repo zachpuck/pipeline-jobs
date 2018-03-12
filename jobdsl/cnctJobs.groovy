@@ -40,19 +40,43 @@ void createJobs() {
       }
 
       branchSources {
-        github {
-          id (pipeline.uniqueId)
-          apiUri(pipeline.apiUrl)
-          repoOwner(pipeline.org)
-          repository(pipeline.repo)
-          scanCredentialsId(pipeline.credentials)
-          buildForkPRHead(false)
-          buildForkPRMerge(true)
-          buildOriginPRMerge(false)
-          buildOriginBranch(true)
-          buildOriginBranchWithPR(false)
-          buildOriginPRHead(false)
-          includes('master')
+        branchSource {
+          source {
+            github {
+              repoOwner(pipeline.org)
+              repository(pipeline.repo)
+              apiUri(pipeline.apiUrl)
+              credentialsId(pipeline.credentials)
+              buildForkPRHead(false)
+              buildForkPRMerge(true)
+              buildOriginPRMerge(false)
+              buildOriginBranch(true)
+              buildOriginBranchWithPR(false)
+              buildOriginPRHead(false)
+              includes('master')
+            }
+          }
+
+          strategy {
+            defaultBranchPropertyStrategy {
+              props {
+                buildRetentionBranchProperty {
+                  buildDiscarder {
+                    logRotator {
+                      daysToKeepStr("${pipeline.keepDays}")
+                      numToKeepStr("")
+                      artifactDaysToKeepStr("")
+                      artifactNumToKeepStr("")
+                    }
+                  }
+                }
+                
+                triggerPRCommentBranchProperty {
+                  commentBody('.*test this please.*')
+                }
+              }
+            }
+          }
         }
       }
 
@@ -62,7 +86,7 @@ void createJobs() {
         }
       }
     }
-    
+
   }
 }
 
