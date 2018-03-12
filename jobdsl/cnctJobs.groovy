@@ -84,10 +84,7 @@ void createJobs() {
         }
 
         logRotator {
-          daysToKeepStr("${pipeline.keepDays}")
-          numToKeepStr("")
-          artifactDaysToKeepStr("")
-          artifactNumToKeepStr("")
+          daysToKeep(pipeline.keepDays)
         }
 
         definition {
