@@ -41,16 +41,6 @@ void createJobs() {
 
       branchSources {
         branchSource {
-          source {
-            github {
-              repoOwner(pipeline.org)
-              repository(pipeline.repo)
-              apiUri(pipeline.apiUrl)
-              credentialsId(pipeline.credentials)
-              includes('master')
-            }
-          }
-
           strategy {
             defaultBranchPropertyStrategy {
               props {
@@ -81,14 +71,24 @@ void createJobs() {
       }
 
       configure { project ->
-        project / 'sources' / 'data' / 'jenkins.branch.BranchSource'/ source(class: 'org.jenkinsci.plugins.github_branch_source.GitHubSCMSource') / traits {
-          'org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait'() {
-            strategyId(3)
-          }
-          
-          'org.jenkinsci.plugins.github__branch__source.ForkPullRequestDiscoveryTrait'() {
-            strategyId(1)
-            trust(class: 'org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustPermission')
+        project / 'sources' / 'data' / 'jenkins.branch.BranchSource'/ {
+          source(class: 'org.jenkinsci.plugins.github_branch_source.GitHubSCMSource') {
+            id(pipeline.uniqueId)
+            apiUri(pipeline.apiUrl)
+            credentialsId(pipeline.credentials)
+            repoOwner(pipeline.org)
+            repository(pipeline.repo)
+
+            traits() {
+              'org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait'() {
+                strategyId(3)
+              }
+              
+              'org.jenkinsci.plugins.github__branch__source.ForkPullRequestDiscoveryTrait'() {
+                strategyId(1)
+                trust(class: 'org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustPermission')
+              }
+            }
           }
         }
       }
