@@ -47,12 +47,6 @@ void createJobs() {
               repository(pipeline.repo)
               apiUri(pipeline.apiUrl)
               credentialsId(pipeline.credentials)
-              buildForkPRHead(false)
-              buildForkPRMerge(true)
-              buildOriginPRMerge(false)
-              buildOriginBranch(true)
-              buildOriginBranchWithPR(false)
-              buildOriginPRHead(false)
               includes('master')
             }
           }
@@ -83,6 +77,21 @@ void createJobs() {
       orphanedItemStrategy {
         discardOldItems {
           daysToKeep(pipeline.keepDays)
+        }
+      }
+
+      configure { project ->
+        project / 'sources' / 'data' / 'jenkins.branch.BranchSource'/ source(class: 'org.jenkinsci.plugins.github_branch_source.GitHubSCMSource') {
+          traits() {
+            'org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait'() {
+              strategyId(3)
+            }
+            
+            'org.jenkinsci.plugins.github__branch__source.ForkPullRequestDiscoveryTrait'() {
+              strategyId(1)
+              trust(class: 'org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustPermission')
+            }
+          }
         }
       }
     }
