@@ -78,7 +78,7 @@ void createJobs() {
       }
 
       configure { project ->
-        project / 'sources' / 'data' / 'jenkins.branch.BranchSource'/ {
+        project / 'sources' / 'data' / 'jenkins.branch.BranchSource' {
           source(class: 'org.jenkinsci.plugins.github_branch_source.GitHubSCMSource') {
             id(pipeline.uniqueId)
             apiUri(pipeline.apiUrl)
