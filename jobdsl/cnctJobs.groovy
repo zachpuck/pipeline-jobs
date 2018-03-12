@@ -2,6 +2,7 @@
 
 import models.*
 import templates.*
+import jenkins.model.Jenkins.*
 
 import hudson.FilePath
 import org.yaml.snakeyaml.Yaml
@@ -70,8 +71,8 @@ void createJobs() {
 
         // defaults Jenkinsfile
         configure { project ->
-          project.name = instance.getDescriptor('PipelineMultiBranchDefaultsProject').clazz.getCanonicalName()
-          project / factory(class: instance.getDescriptor('PipelineBranchDefaultsProjectFactory').clazz.getCanonicalName())
+          project.name = Jenkins.getInstance().getDescriptor('PipelineMultiBranchDefaultsProject').clazz.getCanonicalName()
+          project / factory(class: Jenkins.getInstance().getDescriptor('PipelineBranchDefaultsProjectFactory').clazz.getCanonicalName())
         }
 
         orphanedItemStrategy {
