@@ -81,16 +81,14 @@ void createJobs() {
       }
 
       configure { project ->
-        project / 'sources' / 'data' / 'jenkins.branch.BranchSource'/ source(class: 'org.jenkinsci.plugins.github_branch_source.GitHubSCMSource') {
-          traits() {
-            'org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait'() {
-              strategyId(3)
-            }
-            
-            'org.jenkinsci.plugins.github__branch__source.ForkPullRequestDiscoveryTrait'() {
-              strategyId(1)
-              trust(class: 'org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustPermission')
-            }
+        project / 'sources' / 'data' / 'jenkins.branch.BranchSource'/ source(class: 'org.jenkinsci.plugins.github_branch_source.GitHubSCMSource') / traits {
+          'org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait'() {
+            strategyId(3)
+          }
+          
+          'org.jenkinsci.plugins.github__branch__source.ForkPullRequestDiscoveryTrait'() {
+            strategyId(1)
+            trust(class: 'org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustPermission')
           }
         }
       }
