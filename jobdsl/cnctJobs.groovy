@@ -69,9 +69,9 @@ void createJobs() {
         }
 
         // defaults Jenkinsfile
-        configure { node ->
-          (node / 'factory').@class = 'org.jenkinsci.plugins.pipeline.multibranch.defaults.PipelineBranchDefaultsProjectFactory'
-          (node / 'factory').@plugin = 'pipeline-multibranch-defaults'
+        configure { project ->
+          project.name = instance.getDescriptor('PipelineMultiBranchDefaultsProject').clazz.getCanonicalName()
+          project / factory(class: instance.getDescriptor('PipelineBranchDefaultsProjectFactory').clazz.getCanonicalName())
         }
 
         orphanedItemStrategy {
