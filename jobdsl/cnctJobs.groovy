@@ -26,92 +26,43 @@ void createJobs() {
   // Create/update a pull request job for each config file
   configFiles.each { file ->
     def pipeline = yaml.load(file.readToString())
-    if (pipeline.type == 'cnct') {
-      multibranchPipelineJob(pipeline.uniqueId) {
-        description(pipeline.description)
-        displayName(pipeline.displayName)
 
+    multibranchPipelineJob(pipeline.uniqueId) {
+      description(pipeline.description)
+      displayName(pipeline.displayName)
+
+      if (pipeline.type == 'cnct') {
         // defaults Jenkinsfile
         configure { project ->
           project.name = Jenkins.instance.getDescriptor('PipelineMultiBranchDefaultsProject',).clazz.getCanonicalName()
           project / factory(class: Jenkins.instance.getDescriptor('PipelineBranchDefaultsProjectFactory',).clazz.getCanonicalName())
         }
+      }
 
-        branchSources {
-          github {
-            id (pipeline.uniqueId)
-            apiUri(pipeline.apiUrl)
-            repoOwner(pipeline.org)
-            repository(pipeline.repo)
-            scanCredentialsId(pipeline.credentials)
-            buildForkPRHead(false)
-            buildForkPRMerge(true)
-            buildOriginPRMerge(false)
-            buildOriginBranch(true)
-            buildOriginBranchWithPR(false)
-            buildOriginPRHead(false)
-            includes('master')
-          }
-        }
-
-        orphanedItemStrategy {
-          discardOldItems {
-            daysToKeep(pipeline.keepDays)
-          }
+      branchSources {
+        github {
+          id (pipeline.uniqueId)
+          apiUri(pipeline.apiUrl)
+          repoOwner(pipeline.org)
+          repository(pipeline.repo)
+          scanCredentialsId(pipeline.credentials)
+          buildForkPRHead(false)
+          buildForkPRMerge(true)
+          buildOriginPRMerge(false)
+          buildOriginBranch(true)
+          buildOriginBranchWithPR(false)
+          buildOriginPRHead(false)
+          includes('master')
         }
       }
-    } else if (pipeline.type == 'standard') {
-      pipelineJob(pipeline.uniqueId) {
-        description(pipeline.description)
-        displayName(pipeline.displayName)
 
-        if (pipeline.concurrent) {
-          concurrentBuild(true)
-        } else {
-          concurrentBuild(false)
-        }
-
-        properties {
-          githubProjectProperty {
-            projectUrlStr("https://${pipeline.baseUrl}/${pipeline.org}/${pipeline.repo}")
-          }
-
-          pipelineTriggers {
-            triggers {
-              githubPush()
-            }
-          }
-        }
-
-        logRotator {
+      orphanedItemStrategy {
+        discardOldItems {
           daysToKeep(pipeline.keepDays)
-        }
-
-        definition {
-          cpsScmFlowDefinition {
-            scm {
-              gitSCM {
-                userRemoteConfigs {
-                  userRemoteConfig {
-                    url("https://${pipeline.baseUrl}/${pipeline.org}/${pipeline.repo}")
-                    credentialsId(pipeline.credentials)
-                  }
-                }
-
-                branches {
-                  branchSpec {
-                    name('master')
-                  }
-                }
-              }
-            }
-
-            scriptPath('Jenkinsfile')
-            lightweight(true)
-          }
         }
       }
     }
+    
   }
 }
 
