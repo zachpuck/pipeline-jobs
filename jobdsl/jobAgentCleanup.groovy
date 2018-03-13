@@ -1,5 +1,7 @@
 #!/bin/groovy
-pipelineJob('Jenkins Offline Agent Cleanup') {
+pipelineJob('agent-cleanup') {
+  displayName('Orphaned jenkins agent reaper')
+
   definition {
     cps {
       script(readFileFromWorkspace('scripts/agent-cleanup.groovy'))
