@@ -1,3 +1,5 @@
+@Grab(group='org.yaml', module='snakeyaml', version='1.17') 
+
 import models.*
 import templates.*
 import jenkins.model.Jenkins
