@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: pipeline-busybox
+displayName: Busybox chart pipeline
+description: Test Busybox chart and docker files
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: pipeline-busybox
+keepDays: 10
+credentials: github-access
