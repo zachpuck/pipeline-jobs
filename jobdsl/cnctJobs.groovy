@@ -19,8 +19,8 @@ void createJobs() {
   def constr = new CustomClassLoaderConstructor(this.class.classLoader)
   def yaml = new Yaml(constr)
 
-  // Build a list of all config files ending in .yml
-  def cwd = hudson.model.Executor.currentExecutor().getCurrentWorkspace().absolutize()
+  // Build a list of all config files ending in .yaml
+  def cwd = new File(__FILE__).parent.absolutePath+('/..').absolutize()
   def configFiles = new FilePath(cwd, 'configs').list('*.yaml')
 
   // Create/update a pull request job for each config file
