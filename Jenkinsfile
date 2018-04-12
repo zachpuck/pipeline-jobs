@@ -11,7 +11,7 @@ node {
         $class: 'LogRotator', 
         daysToKeepStr: '10'
       ]
-    ], [$class: 'ScannerJobProperty', doNotScan: false]
+    ]
   ])
 
   stage('Checkout') {
