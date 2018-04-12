@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: pipeline-etcd-vault
+displayName: etcd for vault pipeline
+description: Test etcd for vault chart
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: chart-vault-etcd
+keepDays: 10
+credentials: github-access
