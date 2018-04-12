@@ -1,5 +1,5 @@
 agent {
-  node {
+  node('master') {
     properties([
       [$class: 'BuildBlockerProperty',
        blockLevel: 'GLOBAL',

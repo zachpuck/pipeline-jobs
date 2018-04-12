@@ -20,7 +20,7 @@ void createJobs() {
   def yaml = new Yaml(constr)
 
   // Build a list of all config files ending in .yml
-  def cwd = SEED_JOB.lastBuild.checkouts[0].workspace
+  def cwd = hudson.model.Executor.currentExecutor().getCurrentWorkspace().absolutize()
   def configFiles = new FilePath(cwd, 'configs').list('*.yaml')
 
   // Create/update a pull request job for each config file
