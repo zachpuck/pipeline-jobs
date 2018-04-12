@@ -1,14 +1,4 @@
 pipeline {
-
-  properties([
-    [$class: 'BuildBlockerProperty',
-     blockLevel: 'GLOBAL',
-     blockingJobs: '^.*-pipeline',
-     scanQueueFor: 'ALL',
-     useBuildBlocker: true],
-   disableConcurrentBuilds()
-  ])
-
   options {
     buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
   }
