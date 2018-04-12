@@ -1,7 +1,18 @@
 node {
-  options {
-    buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
-  }
+  properties([
+    [$class: 'BuildBlockerProperty',
+     blockLevel: 'GLOBAL',
+     blockingJobs: '^.*-pipeline',
+     scanQueueFor: 'ALL',
+     useBuildBlocker: true],
+   disableConcurrentBuilds(),
+   [$class: 'BuildDiscarderProperty', 
+      strategy: [
+        $class: 'LogRotator', 
+        daysToKeepStr: '10'
+      ]
+    ], [$class: 'ScannerJobProperty', doNotScan: false]
+  ])
 
   stage('Checkout') {
     checkout scm
