@@ -119,7 +119,7 @@ void createJobs() {
   } else {
     def workspacePath = new File("${SEED_JOB.lastBuild.checkouts[0].workspace}/configs")
     workspacePath.eachFileMatch(FileType.FILES, , ~/^.*\.yaml/) {
-      def pipeline = yaml.load(new File(it).text)
+      def pipeline = yaml.load(it.text)
       jobDslConfig(pipeline)
     }
   }
