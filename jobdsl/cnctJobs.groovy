@@ -117,9 +117,10 @@ void createJobs() {
       jobDslConfig(pipeline)
     }
   } else {
-    def workspacePath = new File("${System.getenv('WORKSPACE')}/configs")
-    workspacePath.eachFileMatch(FileType.FILES, , ~/^.*\.yaml/) {
-      def pipeline = yaml.load(readFileFromWorkspace("configs/${it.name}"))
+    String workspaceFromJenkinsfile = readFileFromWorkspace('workspace.txt').trim()
+    def configPath = new File("${workspaceFromJenkinsfile}/configs")
+    configPath.eachFileMatch(FileType.FILES, , ~/^.*\.yaml/) {
+      def pipeline = yaml.load(it.text)
       jobDslConfig(pipeline)
     }
   }
