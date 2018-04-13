@@ -117,9 +117,9 @@ void createJobs() {
       jobDslConfig(pipeline)
     }
   } else {
-    def configsPath = new File('./configs')
-    configsPath.eachFileMatch(FileType.FILES, , ~/^.*\.yaml/) {
-      def pipeline = yaml.load(readFileFromWorkspace(it.name))
+    def workspacePath = new File("${WORKSPACE}/configs")
+    workspacePath.eachFileMatch(FileType.FILES, , ~/^.*\.yaml/) {
+      def pipeline = yaml.load(readFileFromWorkspace("configs/${it.name}"))
       jobDslConfig(pipeline)
     }
   }
