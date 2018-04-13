@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: pipeline-busybox
+displayName: Demo chart pipeline
+description: Pipeline demo chart
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: pipeline-demo
+keepDays: 10
+credentials: github-access
