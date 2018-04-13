@@ -98,6 +98,14 @@ void createJobs() {
               strategyId(1)
               trust(class: 'org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustPermission')
             }
+
+            refSpecsSCMSourceTrait {
+              templates {
+                refSpecTemplate {
+                  value('+refs/heads/master:refs/remotes/@{remote}/master')
+                }
+              }
+            }
           }
         }
       }
