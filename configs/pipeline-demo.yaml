@@ -1,6 +1,6 @@
 ---
 type: cnct
-uniqueId: pipeline-busybox
+uniqueId: pipeline-demo
 displayName: Demo chart pipeline
 description: Pipeline demo chart
 apiUrl: "https://api.github.com"
