@@ -20,6 +20,7 @@ agent {
     }
 
     stage('Build') {
+      sh 'pwd > workspace.txt'
       jobDsl targets: ['jobdsl/**/*.groovy'].join('\n'),
         removedJobAction: 'DELETE',
         removedViewAction: 'DELETE',
