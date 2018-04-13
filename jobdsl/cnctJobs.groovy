@@ -7,7 +7,6 @@ import jenkins.model.Jenkins
 import hudson.FilePath
 import org.yaml.snakeyaml.Yaml
 import org.yaml.snakeyaml.constructor.CustomClassLoaderConstructor
-import com.cloudbees.jenkins.GitHubWebHook
 
 /**
  * Simple value object to store configuration information for a project.
@@ -107,7 +106,7 @@ void createJobs() {
   }
 
   // re register all webhooks
-  GitHubWebHook.get().reRegisterAllHooks();
+  Jenkins.instance.getExtensionList('com.cloudbees.jenkins.GitHubWebHook')[0].get().reRegisterAllHooks()
 }
 
 createJobs()
