@@ -7,6 +7,7 @@ import jenkins.model.Jenkins
 import hudson.FilePath
 import org.yaml.snakeyaml.Yaml
 import org.yaml.snakeyaml.constructor.CustomClassLoaderConstructor
+import groovy.io.FileType
 
 /**
  * Simple value object to store configuration information for a project.
