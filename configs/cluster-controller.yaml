@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: cluster-controller
+displayName: Cluster-controller pipeline
+description: Kubernetes custom controller for managing "Kraken clusters" CRD
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: cluster-controller
+keepDays: 10
+credentials: github-access
