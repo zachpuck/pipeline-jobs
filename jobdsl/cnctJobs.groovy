@@ -99,8 +99,8 @@ void createJobs() {
               trust(class: 'org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustPermission')
             }
 
-            'jenkins.plugins.git.traits.RefSpecsSCMSourceTrait'() {
-              templates {
+            'jenkins.plugins.git.traits.RefSpecsSCMSourceTrait'(plugin: 'git') {
+              'templates'() {
                 'jenkins.plugins.git.traits.RefSpecsSCMSourceTrait_-RefSpecTemplate'() {
                   value('+refs/heads/master:refs/remotes/@{remote}/master')
                 }
