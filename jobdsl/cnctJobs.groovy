@@ -117,8 +117,9 @@ void createJobs() {
       jobDslConfig(pipeline)
     }
   } else {
-    def workspacePath = new File("${SEED_JOB.lastBuild.checkouts[0].workspace.replaceAll('@libs', '')}/configs")
-    workspacePath.eachFileMatch(FileType.FILES, , ~/^.*\.yaml/) {
+    String workspaceFromJenkinsfile = readFileFromWorkspace('workspace.txt').trim()
+    def configPath = new File("${workspaceFromJenkinsfile}/configs")
+    configPath.eachFileMatch(FileType.FILES, , ~/^.*\.yaml/) {
       def pipeline = yaml.load(it.text)
       jobDslConfig(pipeline)
     }
