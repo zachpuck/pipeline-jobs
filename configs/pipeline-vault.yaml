@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: pipeline-vault
+displayName: Vault pipeline
+description: Test vault chart
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: chart-vault
+keepDays: 10
+credentials: github-access
