@@ -3,7 +3,7 @@ agent {
     properties([
       [$class: 'BuildBlockerProperty',
        blockLevel: 'GLOBAL',
-       blockingJobs: '^.*-pipeline',
+       blockingJobs: '*',
        scanQueueFor: 'ALL',
        useBuildBlocker: true],
      disableConcurrentBuilds(),
