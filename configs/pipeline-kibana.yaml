@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: pipeline-kibana
+displayName: kibana
+description: Kibana is an open source data visualization plugin for Elasticsearch.
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: chart-kibana
+keepDays: 10
+credentials: github-access

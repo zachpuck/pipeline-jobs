@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: pipeline-curator
+displayName: curator
+description: Elasticsearch Curator helps you curate, or manage, your Elasticsearch indices and snapshots.
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: chart-curator
+keepDays: 10
+credentials: github-access
