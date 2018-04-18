@@ -1,10 +1,10 @@
 ---
 type: cnct
-uniqueId: pipeline-container-eventrouter
-displayName: Container for eventrouter
+uniqueId: pipeline-chart-eventrouter
+displayName: Chart for eventrouter
 description: A simple introspective kubernetes service that forwards events to a specified sink.
 apiUrl: "https://api.github.com"
 org: samsung-cnct
-repo: container-eventrouter
+repo: chart-eventrouter
 keepDays: 10
 credentials: github-access
