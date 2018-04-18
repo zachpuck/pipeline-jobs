@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: pipeline-fluent-bit
+displayName: fluent-bit
+description: Fast and Lightweight Log processor and forwarder for Linux, BSD and OSX.
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: chart-fluent-bit
+keepDays: 10
+credentials: github-access

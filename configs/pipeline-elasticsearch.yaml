@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: pipeline-elasticsearch
+displayName: elasticsearch
+description: Elasticsearch is a search engine based on Lucene.
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: chart-elasticsearch
+keepDays: 10
+credentials: github-access
