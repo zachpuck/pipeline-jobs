@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: pipeline-onboarding
+displayName: Technical onboarding chart pipeline
+description: Test technical onboarding chart and docker files
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: container-technical-on-boarding
+keepDays: 10
+credentials: github-access
