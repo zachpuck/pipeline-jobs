@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: pipeline-client-logging
+displayName: client-logging
+description: client-logging is the logging package for the each client cluster (fluentbit,eventrouter).
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: chart-logging-client
+keepDays: 10
+credentials: github-access
