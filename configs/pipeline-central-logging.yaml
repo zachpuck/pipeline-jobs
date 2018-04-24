@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: pipeline-central-logging
+displayName: central-logging
+description: central-logging is the logging package for the central log server (elasticsearch,kibana,curator).
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: chart-logging-central
+keepDays: 10
+credentials: github-access
