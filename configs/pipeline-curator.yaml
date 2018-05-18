@@ -8,3 +8,5 @@ org: samsung-cnct
 repo: chart-curator
 keepDays: 10
 credentials: github-access
+trigger:
+  - pipeline-central-logging

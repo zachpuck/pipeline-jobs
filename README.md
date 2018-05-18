@@ -31,6 +31,8 @@ org: samsung-cnct
 repo: pipeline-jenkins
 keepDays: 10
 credentials: github-access
+trigger:
+  - pipeline-vault
 ```
 
 Setting | Description
@@ -44,6 +46,7 @@ org | Github Org for this repo
 repo | Github repository name
 keepDays | Job data retention in days
 credentials | Jenkins github credentials ID
+trigger | Array of unique ids of pipelines to trigger after this pipeline completes successfully
 
 ### type: standard
 

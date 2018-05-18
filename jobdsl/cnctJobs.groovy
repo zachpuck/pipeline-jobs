@@ -33,6 +33,10 @@ void jobDslConfig(pipeline) {
       }
     }
 
+    properties {
+
+    }
+
     branchSources {
       branchSource {
         source {
@@ -72,6 +76,19 @@ void jobDslConfig(pipeline) {
     }
 
     configure { project ->
+      if (pipeline.trigger && pipeline.trigger.size() > 0) {
+        project / 'properties' / 'org.jenkinsci.plugins.configfiles.folder.FolderConfigFileProperty' /  configs(class: 'sorted-set') {
+          comparator(class: 'org.jenkinsci.plugins.configfiles.folder.FolderConfigFileProperty$1')
+          'org.jenkinsci.plugins.configfiles.custom.CustomConfig'() {
+            id("${pipeline.uniqueId}-dependencies")
+            name('Triggers')
+            comment('Trigger builds for these pipeline master branches on completion')
+            content(pipeline.trigger.join(','))
+            providerId('org.jenkinsci.plugins.configfiles.custom.CustomConfig')
+          }
+        }
+      }
+
       project / 'sources' / 'data' / 'jenkins.branch.BranchSource' / source(class: 'org.jenkinsci.plugins.github_branch_source.GitHubSCMSource') {
         id(pipeline.uniqueId)
         apiUri(pipeline.apiUrl)
