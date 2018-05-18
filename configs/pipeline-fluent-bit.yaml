@@ -8,3 +8,5 @@ org: samsung-cnct
 repo: chart-fluent-bit
 keepDays: 10
 credentials: github-access
+trigger:
+  - pipeline-client-logging
