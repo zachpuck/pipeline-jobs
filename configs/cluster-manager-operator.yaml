@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: cluster-manager-operators
+displayName: Cluster Manager Operators Pipeline
+description: Operators handling the Cluster Manager API-created CRs
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: cma-operator
+keepDays: 10
+credentials: github-access
