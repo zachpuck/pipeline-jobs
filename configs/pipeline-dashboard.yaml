@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: dashboard-demo
+displayName: Dashboard demo chart pipeline
+description: Dashboard demo chart and docker files
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: dashboard-demo
+keepDays: 10
+credentials: github-access
