@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: cluster-manager-api
+displayName: Cluster Manager API Pipeline
+description: A RESTful API that provides managed cluster services
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: cluster-manager-api
+keepDays: 10
+credentials: github-access
