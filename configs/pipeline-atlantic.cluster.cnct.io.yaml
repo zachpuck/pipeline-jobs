@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: pipeline-atlantic.cluster.cnct.io
+displayName: atlantic.cluster.cnct.io
+description: Prototype cluster state repository
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: altantic.cluster.cnct.io
+keepDays: 10
+credentials: github-access
