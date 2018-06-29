@@ -4,7 +4,7 @@ uniqueId: pipeline-pacific.cluster.cnct.io
 displayName: pacific.cluster.cnct.io
 description: Prototype cluster state repository
 apiUrl: "https://api.github.com"
-org: davidewatson
+org: samsung-cnct
 repo: pacific.cluster.cnct.io
 keepDays: 10
 credentials: github-access
