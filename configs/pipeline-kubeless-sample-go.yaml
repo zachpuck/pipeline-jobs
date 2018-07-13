@@ -1,0 +1,10 @@
+---
+type: standard
+uniqueId: pipeline-kubeless-sample-go
+displayName: Kubeless Go sample pipeline
+description: Kubeless Go sample pipeline
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: kubeless-sample-go
+keepDays: 10
+credentials: github-access
