@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: pipeline-cluster-api-provider-ssh
+displayName: cluster-api-provider-ssh
+description: A simple Cluster API provisioner using SSH
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: cluster-api-provider-ssh
+keepDays: 10
+credentials: github-access
