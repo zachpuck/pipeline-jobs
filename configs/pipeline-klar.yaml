@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: pipeline-klar
+displayName: klar pipeline
+description: klar is a frontend that helps scan images for vulnerabilities
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: klar
+keepDays: 10
+credentials: github-access
