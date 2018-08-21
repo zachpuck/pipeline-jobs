@@ -1,4 +1,4 @@
-@Grab(group='org.yaml', module='snakeyaml', version='1.17') 
+@Grab(group='org.yaml', module='snakeyaml', version='1.17')
 
 import models.*
 import templates.*
@@ -59,7 +59,7 @@ void jobDslConfig(pipeline) {
                   }
                 }
               }
-              
+
               triggerPRCommentBranchProperty {
                 commentBody('.*test this please.*')
               }
@@ -98,13 +98,21 @@ void jobDslConfig(pipeline) {
 
         traits() {
           'org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait'() {
-            strategyId(3)
+            strategyId(1)
           }
-          
+
           'org.jenkinsci.plugins.github__branch__source.ForkPullRequestDiscoveryTrait'() {
             strategyId(1)
             trust(class: 'org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustPermission')
           }
+
+          'org.jenkinsci.plugins.github__branch__source.OriginPullRequestDiscoveryTrait'() {
+			strategyId(1)
+		  }
+
+		  'jenkins.scm.impl.trait.RegexSCMHeadFilterTrait'() {
+		  	regex('master|(?i)PR-[0-9]+')
+		  }
 
           'jenkins.plugins.git.traits.RefSpecsSCMSourceTrait'() {
             'templates'() {
