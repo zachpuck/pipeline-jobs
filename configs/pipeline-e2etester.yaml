@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: pipeline-e2etester
+displayName: e2etester container pipeline
+description: e2etester container pipeline
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: container-e2etester
+keepDays: 10
+credentials: github-access
