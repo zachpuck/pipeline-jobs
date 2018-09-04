@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: jenkins-operator
+displayName: Jenkins Operator Pipeline
+description: Kubernetes operator for standing up JenkinsCI servers
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: jenkins-operator
+keepDays: 10
+credentials: github-access
