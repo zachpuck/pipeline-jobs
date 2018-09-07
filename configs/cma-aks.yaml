@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: cma-aks
+displayName: cma-aks Pipeline
+description: A RESTful API that provides Azure AKS cluster services
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: cma-aks
+keepDays: 10
+credentials: github-access
