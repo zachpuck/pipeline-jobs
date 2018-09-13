@@ -5,6 +5,6 @@ displayName: klar pipeline
 description: klar is a frontend that helps scan images for vulnerabilities
 apiUrl: "https://api.github.com"
 org: samsung-cnct
-repo: klar
+repo: container-klar
 keepDays: 10
 credentials: github-access
