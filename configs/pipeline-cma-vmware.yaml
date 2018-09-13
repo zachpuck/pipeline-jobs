@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: pipeline-cma-vmware
+displayName: cma-vmware
+description: A specific implementation of the cluster-manager-api targeting cluster-api-provider-ssh
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: cma-vmware
+keepDays: 10
+credentials: github-access
