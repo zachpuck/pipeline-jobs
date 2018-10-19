@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: nodelabelbot5000
+displayName: nodelabelbot5000
+description: adds labels to kubernetes nodes
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: nodelabelbot5000
+keepDays: 10
+credentials: github-access
