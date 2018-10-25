@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: nginx-k8smon
+displayName: nginx-k8smon
+description: adds an nginx proxy to nodes to expose kubelet rw port
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: nginx-k8smon
+keepDays: 10
+credentials: github-access
