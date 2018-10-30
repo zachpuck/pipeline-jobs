@@ -23,14 +23,12 @@ void jobDslConfig(pipeline) {
 
     if (pipeline.type == 'cnct') {
       // defaults Jenkinsfile
-      configure { project ->
-        project.name = Jenkins.instance.getDescriptor('PipelineMultiBranchDefaultsProject',).clazz.getCanonicalName()
-      }
-      configure {
-        Node factoryNode = it / factory
-        factoryNode.attributes().put 'class', 'org.jenkinsci.plugins.pipeline.multibranch.defaults.PipelineBranchDefaultsProjectFactory'
-        (factoryNode / 'owner').attributes().put 'class', 'org.jenkinsci.plugins.pipeline.multibranch.defaults.PipelineMultiBranchDefaultsProject'
-      }
+      factory {
+        pipelineBranchDefaultsProjectFactory {
+          scriptId 'Jenkinsfile'
+          useSandbox(false)
+        }
+      } 
     }
 
     properties {
