@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: cma-aws
+displayName: cma-aws Pipeline
+description: AWS helper API for Cluster Manager API
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: cma-aws
+keepDays: 10
+credentials: github-access
