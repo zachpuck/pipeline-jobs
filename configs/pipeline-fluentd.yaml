@@ -1,0 +1,12 @@
+---
+type: cnct
+uniqueId: pipeline-fluentd
+displayName: fluentd
+description: Fast and Lightweight Log processor and forwarder for Linux, BSD and OSX.
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: chart-fluentd
+keepDays: 10
+credentials: github-access
+trigger:
+  - pipeline-client-logging
