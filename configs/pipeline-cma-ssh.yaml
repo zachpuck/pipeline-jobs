@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: cma-ssh
+displayName: cma-ssh Pipeline
+description: SSH helper API for Cluster Manager API
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: cma-ssh
+keepDays: 10
+credentials: github-access
