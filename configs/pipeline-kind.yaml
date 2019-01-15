@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: pipeline-kind
+displayName: Kind container pipeline
+description: A container containing docker, kind, kubectl, et al. This can be used to mimic a CMC for CI purposes.
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: container-kind
+keepDays: 10
+credentials: github-access
