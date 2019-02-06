@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: pipeline-muninn.cluster.cnct.io
+displayName: muninn.cluster.cnct.io
+description: Cluster Configuration Repository
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: muninn.cluster.cnct.io
+keepDays: 10
+credentials: github-access
