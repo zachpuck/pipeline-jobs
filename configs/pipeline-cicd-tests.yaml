@@ -1,0 +1,10 @@
+---
+type: cnct
+uniqueId: cicd-tests
+displayName: cicd-tests Pipeline
+description: a repo used to test the CI/CD system
+apiUrl: "https://api.github.com"
+org: samsung-cnct
+repo: cicd-tests
+keepDays: 10
+credentials: github-access
